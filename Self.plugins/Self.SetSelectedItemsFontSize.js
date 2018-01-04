@@ -44,16 +44,13 @@ try{
                             var allFiles = nyf.listFiles(selectedInfoItems[i]);
                             // _~_~_~notes.html文件的ssg路径
                             var curFilePath = selectedInfoItems[i] + allFiles[0];
-                            alert(curFilePath);
                             // 获取_~_~_~notes.html文件为html内容
                             var sCon = nyf.loadText(curFilePath, 'auto');
-                            alert(sCon);
                             // 设置的字体size保存到ini文件
                             localStorage.setItem(sCfgKey, sSiz);
                             //match px, pt, %
                             var regx = /font-size:( |)\d{1,2}(|\.\d+)(| )pt|font-size:( |)\d{1,2}(|\.\d+)(| )px|font-size:( |)\d{1,3}(| )%/g;
                             var html = sCon.replace(regx, 'font-size: ' + sSiz + 'pt');
-                            alert(html);
                             // 替换条目的文本内容
                             nyf.saveUtf8(curFilePath, html,true);
                         }
