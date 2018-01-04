@@ -1,7 +1,7 @@
 /*
 * 初版开始时间：2017/12/30
-* 初版完成时间：2018/01/
-* 最新更新时间：2018/01/
+* 初版完成时间：2018/01/04
+* 最新更新时间：2018/01/04
 * 本插件属个人开发，如有任何问题，概不负责。
 * 联系邮箱：hiyesman@163.com
 */
@@ -45,21 +45,18 @@ try{
                             // _~_~_~notes.html文件的ssg路径
                             var curFilePath = selectedInfoItems[i] + allFiles[0];
                             alert(curFilePath);
-                            alert(sSiz);
                             // 获取_~_~_~notes.html文件为html内容
-                            var sCon = plugin.getTextContent(curFilePath, true);
+                            var sCon = nyf.loadText(curFilePath, 'auto');
+                            alert(sCon);
                             // 设置的字体size保存到ini文件
                             localStorage.setItem(sCfgKey, sSiz);
                             //match px, pt, %
-                            var regx = /font-size:( |)\d{0,1,2}(|\.\d+)(| )pt|font-size:( |)\d{0,1,2}(|\.\d+)(| )px|font-size:( |)\d{1,3}(| )%/g;
+                            var regx = /font-size:( |)\d{1,2}(|\.\d+)(| )pt|font-size:( |)\d{1,2}(|\.\d+)(| )px|font-size:( |)\d{1,3}(| )%/g;
                             var html = sCon.replace(regx, 'font-size: ' + sSiz + 'pt');
+                            alert(html);
                             // 替换条目的文本内容
-                            plugin.setTextContent(curFilePath, html, true);
-                            // 为当前html标记dirty flag
-                            // plugin.setDomDirty(-1, true);
+                            nyf.saveUtf8(curFilePath, html,true);
                         }
-                        // 如果当前数据库中当前html内容有dirty标记，提交改变
-                        plugin.commitCurrentChanges(-1);
                     }
                     else {
                         alert("Font Size should be 5-40!");
