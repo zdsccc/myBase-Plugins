@@ -22,6 +22,7 @@ try{
         {
             // 所有选中的条目
             var selectedInfoItems = plugin.getSelectedInfoItems(-1);
+
             // 所有选中的条目的数量
             var selectedInfoItems_len = selectedInfoItems.length;
             // 当前数据库中的html内容是否可编辑
