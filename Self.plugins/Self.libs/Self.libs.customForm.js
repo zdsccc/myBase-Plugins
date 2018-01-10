@@ -11,18 +11,22 @@ function customForm()
 {
     alert("begin");
     var combolist_vItems = [
-        "普通输入框",
-        "日期选择框",
-        "时间选择框",
+        "单行输入区",
+        "多行输入区",
         "多选框",
-        "下拉列表",
-        "可编辑的下拉列表",
-        "",
-
+        "颜色选框",
+        "下拉可选菜单（不可编辑）",
+        "下拉可选菜单（可编辑）",
+        "单文件选框",
+        "多文件选框",
+        "保存文件选框",
+        "文件夹选框",
+        "日期选框",
+        "时间选框"
     ];
     var vFields = [
         {sField: "combolist", sLabel: '输入框类型选择', vItems: combolist_vItems, sInit: 0}
-
+        , {sField: 'lineedit', sLabel: '输入框名称', bReadonly: false, sInit: '', bRequired: true}
     ];
     var vRes=input(plugin.getScriptTitle(), vFields, {nMinSize: 500, nSpacing: 6, bVerticalLayout: false});
     alert("end");
